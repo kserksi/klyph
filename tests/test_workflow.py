@@ -12,7 +12,7 @@ WORKFLOW = (
 def test_docker_publish_workflow_is_release_ready():
     content = WORKFLOW.read_text(encoding="utf-8")
 
-    assert "kserksi/klyph" in content
+    assert "jaykserks/klyph" in content
     assert '"V*.*.*"' in content
     assert "workflow_dispatch:" in content
     assert "DOCKERHUB_USERNAME" in content

@@ -22,7 +22,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  IMAGE_NAME: kserksi/klyph
+  IMAGE_NAME: jaykserks/klyph
 
 jobs:
   publish:
