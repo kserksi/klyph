@@ -1,0 +1,50 @@
+# Replace the domain, certificate paths, and log paths for your deployment.
+# Define `limit_req_zone $binary_remote_addr zone=klyph_api:10m rate=20r/s;`
+# once in the nginx `http` block.
+
+server {
+    listen 80;
+    server_name fonts.example.com;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name fonts.example.com;
+
+    ssl_certificate     /etc/letsencrypt/live/fonts.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/fonts.example.com/privkey.pem;
+
+    access_log /var/log/nginx/klyph.access.log;
+    error_log  /var/log/nginx/klyph.error.log warn;
+
+    location = /healthz {
+        proxy_pass http://127.0.0.1:8000;
+        access_log off;
+    }
+
+    location = /readyz {
+        proxy_pass http://127.0.0.1:8000;
+        access_log off;
+    }
+
+    location /v2/fonts/ {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_read_timeout 30s;
+    }
+
+    location = /v2/subsets {
+        limit_except POST OPTIONS { deny all; }
+        limit_req zone=klyph_api burst=40 nodelay;
+        client_max_body_size 64k;
+        proxy_pass http://127.0.0.1:8000;
+        proxy_read_timeout 30s;
+    }
+
+    location / {
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_pass http://127.0.0.1:8000;
+    }
+}

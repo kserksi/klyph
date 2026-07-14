@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.artifacts/
+.venv/
+*.egg-info/
+cache/
+*.tmp
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+deploy/MIGRATION*.md

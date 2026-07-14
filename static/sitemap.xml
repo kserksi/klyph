@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{PUBLIC_BASE_URL}}/</loc>
+    <lastmod>2026-07-13</lastmod>
+  </url>
+  <url>
+    <loc>{{PUBLIC_BASE_URL}}/terms</loc>
+    <lastmod>2026-07-13</lastmod>
+  </url>
+  <url>
+    <loc>{{PUBLIC_BASE_URL}}/privacy</loc>
+    <lastmod>2026-07-13</lastmod>
+  </url>
+  <url>
+    <loc>{{PUBLIC_BASE_URL}}/licenses</loc>
+    <lastmod>2026-07-13</lastmod>
+  </url>
+  <url>
+    <loc>{{PUBLIC_BASE_URL}}/components</loc>
+    <lastmod>2026-07-13</lastmod>
+  </url>
+</urlset>

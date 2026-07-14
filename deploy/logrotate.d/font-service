@@ -1,0 +1,20 @@
+# /etc/logrotate.d/font-service
+#
+# Application log rotation for Klyph structured JSON logs.
+# systemd captures stdout+stderr to /var/log/font-service/app.log
+# (see systemd/font-service.service, StandardOutput=append:...).
+#
+# Install:
+#   sudo cp deploy/logrotate.d/font-service /etc/logrotate.d/font-service
+#   sudo logrotate -d /etc/logrotate.d/font-service   # dry-run test
+
+/var/log/font-service/app.log {
+    daily
+    rotate 7
+    compress
+    delaycompress
+    missingok
+    notifempty
+    copytruncate
+    su fontsvc fontsvc
+}

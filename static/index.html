@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Klyph — 必要な文字を、必要なぶんだけ</title>
+  <meta name="description" content="必要な文字だけを収録した軽量な WOFF2 フォントを生成・配信するオープンソースサービスです。">
+  <meta name="author" content="Klyph contributors">
+  <meta name="application-name" content="Klyph">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#080b18">
+  <link rel="canonical" href="{{PUBLIC_BASE_URL}}/">
+  <link rel="alternate" hreflang="ja" href="{{PUBLIC_BASE_URL}}/">
+  <link rel="alternate" hreflang="x-default" href="{{PUBLIC_BASE_URL}}/">
+  <link rel="icon" href="/favicon.svg?v=20260714-2" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260714-2" sizes="180x180">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Klyph">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="必要な文字を、必要なぶんだけ。">
+  <meta property="og:description" content="セルフホスト可能な決定論的 Web フォント配信基盤。">
+  <meta property="og:url" content="{{PUBLIC_BASE_URL}}/">
+  <meta property="og:image" content="{{PUBLIC_BASE_URL}}/og-image.png">
+  <meta property="og:image:secure_url" content="{{PUBLIC_BASE_URL}}/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Klyph のサービス画面">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="必要な文字を、必要なぶんだけ。— Klyph">
+  <meta name="twitter:description" content="セルフホスト可能な決定論的 Web フォント配信基盤。">
+  <meta name="twitter:image" content="{{PUBLIC_BASE_URL}}/og-image.png">
+  <meta name="twitter:image:alt" content="Klyph のサービス画面">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"{{PUBLIC_BASE_URL}}/#website","url":"{{PUBLIC_BASE_URL}}/","name":"Klyph","alternateName":"Klyph Web Font Service","description":"必要な文字だけを収録した軽量な WOFF2 フォントを生成・配信するオープンソースサービスです。","inLanguage":"ja"},{"@type":"WebApplication","@id":"{{PUBLIC_BASE_URL}}/#service","name":"Klyph","url":"{{PUBLIC_BASE_URL}}/","applicationCategory":"DeveloperApplication","operatingSystem":"Web","description":"Web ページで使用する文字を収集し、決定論的な WOFF2 サブセットを生成・配信します。","inLanguage":"ja","isPartOf":{"@id":"{{PUBLIC_BASE_URL}}/#website"},"codeRepository":"https://github.com/kserksi/klyph"}]}
+  </script>
+  <link rel="stylesheet" href="/assets/site.css?v=20260714-portable" integrity="sha512-U9aHyRRX+6EFdUnhiTSyywbcn8U9oFlIpFa0YCdQPq7AJFskUgOuVRW/kKXvwEpwSpYVGv6HMP3x9avGX+ex+w==" crossorigin="anonymous">
+  <script defer src="/sdk/v2.js" integrity="sha512-y/2Foun766oMRQ41Asy7oK/dtRnlhzTq79+YsBJoVF6XC7Nr532O3C/HZWTV7TQSPaXHt6apOQE+WJXruDOZHw==" crossorigin="anonymous"></script>
+  <script defer src="/assets/site.js?v=20260714-portable" integrity="sha512-fsFJJRQ8qkfKa434TiiJjfwRktHBAvY9EJfZIAQPzqzu5FnQHziiRjcfzsXELIFPAXiZPhECERKwDK48Wjqbig==" crossorigin="anonymous"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/" aria-label="Klyph ホーム">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span class="brand-copy">Klyph<small>open source font service</small></span>
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開く"><span></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション">
+        <a href="#service">Service</a>
+        <a href="#fonts">Fonts</a>
+        <a href="#legal">Legal</a>
+        <a href="/components">Components</a>
+        <a class="nav-status" href="#status" data-service-status><span class="nav-status-dot" aria-hidden="true"></span><span data-status-message>確認中</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="service">
+      <div class="container hero-grid">
+        <div>
+          <p class="kicker">Open source font infrastructure / v2</p>
+          <h1>必要な文字を、<span>必要なぶんだけ。</span></h1>
+          <p class="hero-lead">サイトが使う文字を収集し、Zen フォントを決定論的な WOFF2 サブセットへ変換。読みやすさはそのままに、転送量と表示待ちを小さくします。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#architecture">仕組みを知る <span aria-hidden="true">→</span></a>
+            <a class="button" href="#status">稼働状況を見る</a>
+          </div>
+          <ul class="hero-meta" aria-label="サービス特性">
+            <li>Deterministic</li>
+            <li>Immutable cache</li>
+            <li>Privacy conscious</li>
+          </ul>
+        </div>
+
+        <aside class="glass-card status-card" id="status" data-service-status aria-labelledby="status-title" role="status" aria-live="polite" aria-atomic="true">
+          <p class="card-label" id="status-title">Service readiness</p>
+          <div class="status-main">
+            <span class="status-orb" aria-hidden="true"></span>
+            <div><strong data-status-message>状態を確認しています</strong><span data-status-detail>connecting to /readyz</span></div>
+          </div>
+          <dl class="status-list">
+            <div><dt>API</dt><dd>v2</dd></div>
+            <div><dt>Format</dt><dd>WOFF2</dd></div>
+            <div><dt>Cache policy</dt><dd>immutable / 1y</dd></div>
+            <div><dt>Source fonts</dt><dd>3 variants</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="architecture">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">How it works</p>
+          <h2>同じ文字集合なら、いつでも同じフォント。</h2>
+          <p>入力順や重複に左右されない文字集合を作り、ソースフォント・生成設定・文字集合をまとめてハッシュ化します。</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card"><span class="feature-number">01 / COLLECT</span><h3>ページから文字を収集</h3><p>SDK が表示対象のテキストだけを走査。非表示要素やスクリプトを除外し、DOM 更新にも追従します。</p></article>
+          <article class="feature-card"><span class="feature-number">02 / NORMALIZE</span><h3>安全な文字集合へ正規化</h3><p>NFC 正規化、制御文字の除去、重複排除、コードポイント順の整列で安定した入力を作ります。</p></article>
+          <article class="feature-card"><span class="feature-number">03 / GENERATE</span><h3>隔離プロセスで生成</h3><p>FontTools を独立プロセスで実行。時間・同時実行数・待機数・キャッシュ容量を制限します。</p></article>
+          <article class="feature-card"><span class="feature-number">04 / VALIDATE</span><h3>WOFF2 を検証</h3><p>署名、ファイルサイズ、フォント構造を確認してから、原子的にキャッシュへ配置します。</p></article>
+          <article class="feature-card"><span class="feature-number">05 / DISTRIBUTE</span><h3>不変 URL で配信</h3><p>フォント版と文字ハッシュを含む URL を返し、CDN とブラウザで一年間 immutable キャッシュします。</p></article>
+          <article class="feature-card"><span class="feature-number">06 / EXTEND</span><h3>差分だけを追加</h3><p>MutationObserver が新しい文字を見つけたとき、既に読み込んだ文字を除外して差分を要求します。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-compact" id="fonts">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Typography</p>
+          <h2>角の静けさと、丸のやわらかさ。</h2>
+          <p>Google Fonts の Zen ファミリーを、本文と見出しの役割に合わせて配信します。</p>
+        </div>
+        <div class="specimen-grid">
+          <article class="glass-card specimen specimen-kaku"><span class="specimen-name">zen-kaku-regular / 400</span><p class="specimen-sample" lang="ja">静かに、正確に、情報を届ける。</p><p class="specimen-meta">Zen Kaku Gothic New — 本文、UI、長文の可読性に。</p></article>
+          <article class="glass-card specimen specimen-maru"><span class="specimen-name">zen-maru-regular · bold / 400 · 700</span><p class="specimen-sample" lang="ja">やさしい輪郭に、意志を宿す。</p><p class="specimen-meta">Zen Maru Gothic — 見出し、メッセージ、印象的な言葉に。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-compact" aria-labelledby="api-title">
+      <div class="container">
+        <div class="section-head"><p class="eyebrow">Public surface</p><h2 id="api-title">小さく、明示的な API。</h2><p>公開面を必要最小限に保ち、生成・配信・監視を役割ごとに分離しています。</p></div>
+        <div class="endpoint-list">
+          <div class="endpoint"><span class="method">POST</span><code>/v2/subsets</code><span>フォントサブセットを解決</span></div>
+          <div class="endpoint"><span class="method">GET</span><code>/v2/fonts/{font}/{version}/{hash}.woff2</code><span>不変フォントを配信</span></div>
+          <div class="endpoint"><span class="method">GET</span><code>/sdk/v2.js</code><span>ブラウザ SDK</span></div>
+          <div class="endpoint"><span class="method">GET</span><code>/healthz · /readyz</code><span>稼働・準備状態を確認</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="guardrails-title">
+      <div class="container">
+        <div class="section-head"><p class="eyebrow">Guardrails</p><h2 id="guardrails-title">壊れ方まで、設計する。</h2></div>
+        <div class="guardrail-grid">
+          <article class="guardrail"><strong>Request limits</strong><p>ストリームを含む本文サイズと、ユニーク文字数を制限。</p></article>
+          <article class="guardrail"><strong>Process isolation</strong><p>タイムアウトした生成プロセスを終了し、一時ファイルを清掃。</p></article>
+          <article class="guardrail"><strong>Capacity control</strong><p>待機列、並列数、キャッシュ総量、空き容量に上限を設定。</p></article>
+          <article class="guardrail"><strong>Observable</strong><p>原文を残さず、request ID・件数・ハッシュ・時間を JSON 記録。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-compact" id="legal">
+      <div class="container">
+        <div class="section-head"><p class="eyebrow">Trust & legal</p><h2>利用前に知ってほしいこと。</h2><p>サービスの利用条件、処理する情報、フォントと作品の権利関係を明確にしています。</p></div>
+        <div class="legal-grid">
+          <a class="legal-link" href="/terms"><small>01 / TERMS</small><h3>利用規約</h3><p>利用条件、禁止事項、提供範囲について。</p></a>
+          <a class="legal-link" href="/privacy"><small>02 / PRIVACY</small><h3>プライバシーポリシー</h3><p>文字データ、ログ、外部サービスの取り扱い。</p></a>
+          <a class="legal-link" href="/licenses"><small>03 / LICENSES</small><h3>ライセンス・クレジット</h3><p>フォント、背景作品、ソフトウェアの権利表示。</p></a>
+          <a class="legal-link" href="/components"><small>04 / COMPONENTS</small><h3>オープンソース構成</h3><p>実行基盤を支えるソフトウェアと固定バージョン。</p></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-about"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">K</span><span class="brand-copy">Klyph<small>open source font service</small></span></a><p>セルフホスト可能な、決定論的・キャッシュ可能な Web フォント配信基盤。</p></div>
+      <div class="footer-column"><h2>Service</h2><a href="#architecture">仕組み</a><a href="#fonts">フォント</a><a href="#status">稼働状況</a></div>
+      <div class="footer-column"><h2>Legal</h2><a href="/terms">利用規約</a><a href="/privacy">プライバシー</a><a href="/licenses">ライセンス</a><a href="/components">OSS 構成</a></div>
+      <div class="footer-column"><h2>Project</h2><a href="https://github.com/kserksi/klyph" target="_blank" rel="noopener noreferrer">GitHub</a><a href="/readyz">Readiness</a></div>
+    </div>
+    <div class="container footer-bottom"><span>© <span data-current-year>2026</span> Klyph contributors.</span><span>Apache-2.0</span></div>
+  </footer>
+</body>
+</html>

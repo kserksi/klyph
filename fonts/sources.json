@@ -1,0 +1,41 @@
+{
+  "sources": {
+    "kaku": {
+      "repository": "googlefonts/zen-kakugothic",
+      "commit": "2705757e17e42954f3acbdf921ac0ae24d1270cd",
+      "files": [
+        "ZenKakuGothicNew-Regular.ttf"
+      ]
+    },
+    "maru": {
+      "repository": "googlefonts/zen-marugothic",
+      "commit": "553c872b216d1290e2902a466edcdc9682f0df6a",
+      "files": [
+        "ZenMaruGothic-Regular.ttf",
+        "ZenMaruGothic-Bold.ttf"
+      ]
+    }
+  },
+  "files": {
+    "ZenKakuGothicNew-Regular.ttf": {
+      "url": "https://raw.githubusercontent.com/googlefonts/zen-kakugothic/2705757e17e42954f3acbdf921ac0ae24d1270cd/fonts/ttf/ZenKakuGothicNew-Regular.ttf",
+      "sha256": "b840cd07a67d89cacca44249ae49aa99ee7640eb5ce623be8d8983d6aabac801"
+    },
+    "OFL-kaku.txt": {
+      "url": "https://raw.githubusercontent.com/googlefonts/zen-kakugothic/2705757e17e42954f3acbdf921ac0ae24d1270cd/OFL.txt",
+      "sha256": "0fac78a235c98d640cb06332eb5362c211d86fa03c011df438c35005d22ad2c7"
+    },
+    "ZenMaruGothic-Regular.ttf": {
+      "url": "https://raw.githubusercontent.com/googlefonts/zen-marugothic/553c872b216d1290e2902a466edcdc9682f0df6a/fonts/ttf/ZenMaruGothic-Regular.ttf",
+      "sha256": "a0c0b53543e0993ae2225e629c833f3d51495ad31720694ff112ce4ce11111ef"
+    },
+    "ZenMaruGothic-Bold.ttf": {
+      "url": "https://raw.githubusercontent.com/googlefonts/zen-marugothic/553c872b216d1290e2902a466edcdc9682f0df6a/fonts/ttf/ZenMaruGothic-Bold.ttf",
+      "sha256": "fe24426b9c8b5523a0146a8235c8674eccf0493af354a53ec895c3596d9eb745"
+    },
+    "OFL-maru.txt": {
+      "url": "https://raw.githubusercontent.com/googlefonts/zen-marugothic/553c872b216d1290e2902a466edcdc9682f0df6a/OFL.txt",
+      "sha256": "2a20cf7ce1909d8ee1e949095d340f7d7656705f7c810a2d6faf56800ad0cb3d"
+    }
+  }
+}

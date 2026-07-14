@@ -1,0 +1,45 @@
+# Install to /etc/systemd/system/font-service.service and customize the
+# public URL, allowed origins, user, and installation path.
+
+[Unit]
+Description=Klyph web-font subsetting service
+After=network.target
+
+[Service]
+Type=simple
+User=fontsvc
+Group=fontsvc
+WorkingDirectory=/opt/klyph
+
+Environment=FONT_DIR=/opt/klyph/fonts
+Environment=FONT_CACHE_DIR=/opt/klyph/cache
+Environment=FONT_STATIC_DIR=/opt/klyph/static
+Environment=FONT_PUBLIC_BASE_URL=https://fonts.example.com
+Environment=FONT_ALLOWED_ORIGINS=https://www.example.com
+Environment=FONT_GENERATION_WORKERS=2
+Environment=FONT_MAX_PENDING_GENERATIONS=32
+Environment=FONT_MAX_CACHE_BYTES=10737418240
+Environment=FONT_MIN_FREE_BYTES=268435456
+Environment=FONT_CACHE_MAX_AGE_DAYS=30
+Environment=FONT_CACHE_CLEANUP_INTERVAL=86400
+Environment=FONT_SHUTDOWN_TIMEOUT=10
+Environment=FONT_LOG_LEVEL=INFO
+
+ExecStart=/opt/klyph/.venv/bin/uvicorn app.main:app \
+    --host 127.0.0.1 \
+    --port 8000 \
+    --workers 1 \
+    --proxy-headers \
+    --forwarded-allow-ips=127.0.0.1 \
+    --limit-concurrency 100 \
+    --timeout-keep-alive 5 \
+    --no-access-log
+
+StandardOutput=append:/var/log/font-service/app.log
+StandardError=append:/var/log/font-service/app.log
+Restart=always
+RestartSec=5
+TimeoutStopSec=15
+
+[Install]
+WantedBy=multi-user.target

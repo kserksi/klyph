@@ -1,0 +1,28 @@
+[project]
+name = "klyph"
+version = "2.0.0"
+description = "Deterministic, cached webfont subsetting service"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.139,<1",
+  "fonttools[woff]>=4.63,<5",
+  "uvicorn[standard]>=0.51,<1",
+]
+
+[project.optional-dependencies]
+test = [
+  "httpx2>=2.5,<3",
+  "pytest>=9.1.1,<10",
+  "pytest-asyncio>=1.4,<2",
+]
+
+[build-system]
+requires = ["setuptools>=80"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["app"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
