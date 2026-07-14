@@ -27,8 +27,11 @@ def test_docker_publish_workflow_is_release_ready():
     assert "docker/build-push-action@v7" in content
     assert "provenance: mode=max" in content
     assert "sbom: true" in content
-    assert "Create GitHub release" in content
-    assert 'gh release create "$GITHUB_REF_NAME"' in content
+    assert "Reconcile GitHub release" in content
+    assert "git describe --tags --abbrev=0" in content
+    assert 'gh release view "$RELEASE_TAG"' in content
+    assert 'gh release create "$RELEASE_TAG"' in content
+    assert "GH_REPO: ${{ github.repository }}" in content
     assert "contents: write" in content
     assert "password:" in content
     assert "password: ${{ secrets.DOCKERHUB_TOKEN }}" in content

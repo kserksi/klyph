@@ -75,19 +75,42 @@ jobs:
           sbom: true
 
   release:
-    name: Create GitHub release
-    if: startsWith(github.ref, 'refs/tags/')
+    name: Reconcile GitHub release
+    if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main'
     needs: publish
     permissions:
       contents: write
     runs-on: ubuntu-latest
 
     steps:
-      - name: Create release with generated notes
+      - name: Check out repository and tags
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Resolve release tag
+        id: release-tag
+        shell: bash
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            tag="$GITHUB_REF_NAME"
+          else
+            tag="$(git describe --tags --abbrev=0)"
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Create release with generated notes when missing
         env:
           GH_TOKEN: ${{ github.token }}
-        run: >-
-          gh release create "$GITHUB_REF_NAME"
-          --verify-tag
-          --generate-notes
-          --title "Klyph $GITHUB_REF_NAME"
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ steps.release-tag.outputs.tag }}
+        shell: bash
+        run: |
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            echo "Release $RELEASE_TAG already exists."
+            exit 0
+          fi
+          gh release create "$RELEASE_TAG" \
+            --verify-tag \
+            --generate-notes \
+            --title "Klyph $RELEASE_TAG"
