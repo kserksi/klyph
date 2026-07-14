@@ -141,4 +141,4 @@ Klyph writes single-line JSON logs to standard output. Logs include request IDs,
 
 ## Licensing
 
-Klyph's source code is licensed under the [Apache License 2.0](LICENSE). The bundled fonts are distributed separately under SIL Open Font License 1.1. See `fonts/OFL-kaku.txt`, `fonts/OFL-maru.txt`, and the `/licenses` page for attribution details.
+Klyph's source code is licensed under the [Apache License 2.0](LICENSE). The bundled fonts are distributed separately under SIL Open Font License 1.1. The Hero artwork is by **Lilac** ([Pixiv artwork #146748240](https://www.pixiv.net/artworks/146748240)); all rights to the image remain with the artist, and it is not covered by Apache-2.0. See `fonts/OFL-kaku.txt`, `fonts/OFL-maru.txt`, and the `/licenses` page for attribution details.

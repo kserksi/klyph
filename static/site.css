@@ -172,7 +172,13 @@ button { color: inherit; }
   content: "";
 }
 
-.hero { padding: 108px 0 88px; }
+.hero {
+  padding: 108px 0 88px;
+  background:
+    linear-gradient(90deg, rgba(8, 11, 24, 0.96) 0%, rgba(8, 11, 24, 0.84) 44%, rgba(8, 11, 24, 0.54) 100%),
+    linear-gradient(180deg, rgba(8, 11, 24, 0.16), rgba(8, 11, 24, 0.72)),
+    url("/assets/hero-background.webp") center 42% / cover no-repeat;
+}
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr); align-items: end; gap: 76px; }
 
 .kicker, .eyebrow {
@@ -400,7 +406,10 @@ button { color: inherit; }
   .site-nav a { padding: 12px; }
   .site-nav .nav-status { margin-top: 8px; }
   .js body.nav-open .site-nav { display: flex; }
-  .hero { padding: 74px 0 54px; }
+  .hero {
+    padding: 74px 0 54px;
+    background-position: center, center, 62% center;
+  }
   .hero h1 { font-size: clamp(3rem, 15vw, 5rem); }
   .section { padding: 68px 0; }
   .feature-grid, .specimen-grid, .legal-grid, .guardrail-grid { grid-template-columns: 1fr; }

@@ -256,6 +256,14 @@ def test_components_page_tracks_production_lock(client):
     assert "開発・テスト専用ツールは含みません" in html
 
 
+def test_licenses_page_credits_hero_artwork(client):
+    html = client.get("/licenses").text
+    assert '<section class="policy-section" id="artwork">' in html
+    assert "Lilac" in html
+    assert "https://www.pixiv.net/artworks/146748240" in html
+    assert "Apache License 2.0 の対象外" in html
+
+
 def test_manifest_and_favicon(client):
     manifest = client.get("/site.webmanifest")
     assert manifest.status_code == 200
@@ -300,10 +308,20 @@ def test_machine_endpoints_are_not_indexable(client, path):
 def test_frontend_assets(client):
     stylesheet = client.get("/assets/site.css")
     script = client.get("/assets/site.js")
+    hero_background = client.get("/assets/hero-background.webp")
     assert stylesheet.status_code == 200
     assert stylesheet.headers["content-type"].startswith("text/css")
     assert ".policy-layout" in stylesheet.text
     assert 'url("http' not in stylesheet.text
+    assert 'url("/assets/hero-background.webp")' in stylesheet.text
+    assert hero_background.status_code == 200
+    assert hero_background.headers["content-type"].startswith("image/webp")
+    assert hero_background.content[:4] == b"RIFF"
+    assert hero_background.content[8:12] == b"WEBP"
+    assert sha512_integrity(hero_background.content) == (
+        "sha512-4k1u9o1s8EGw2Escm2o5X2e2a1KoXDfNh1mGn5h1deSHK6wTtykUeP9Y3Ax9s8Hm"
+        "B44RxudosPSB7c0lob7Aaw=="
+    )
     assert script.status_code == 200
     assert "application/javascript" in script.headers["content-type"]
     assert "data-service-status" in script.text

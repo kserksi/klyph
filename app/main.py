@@ -370,6 +370,15 @@ async def site_styles() -> FileResponse:
     )
 
 
+@app.get("/assets/hero-background.webp")
+async def hero_background() -> FileResponse:
+    return FileResponse(
+        settings.static_dir / "hero-background.webp",
+        media_type="image/webp",
+        headers={"Cache-Control": "public, max-age=604800"},
+    )
+
+
 @app.get("/assets/site.js")
 async def site_script() -> FileResponse:
     return FileResponse(
