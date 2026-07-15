@@ -84,9 +84,7 @@ jobs:
           context: .
           push: true
 
-          platforms: |
-            linux/amd64
-            linux/arm64
+          platforms: linux/amd64,linux/arm64
 
           tags: |
             ${{ steps.meta.outputs.tags }}
@@ -100,16 +98,14 @@ jobs:
           provenance: mode=max
           sbom: true
 
-
       # 同步 GitHub README.md 到 Docker Hub Overview
-      - name: Sync README to Docker Hub
-        uses: peter-evans/dockerhub-description@v4
+      - name: Update Docker Hub README
+        uses: peter-evans/dockerhub-description@v5
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: ${{ env.IMAGE_NAME }}
-
-
+          readme-filepath: ./README.md
 
   release:
 
