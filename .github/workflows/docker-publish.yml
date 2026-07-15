@@ -100,6 +100,7 @@ jobs:
 
       # 同步 GitHub README.md 到 Docker Hub Overview
       - name: Update Docker Hub README
+        continue-on-error: true
         uses: peter-evans/dockerhub-description@v5
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
